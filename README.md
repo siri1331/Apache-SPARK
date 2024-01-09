@@ -13,8 +13,7 @@ Clone the repository by running git clone https://github.com/itversity/spark-sql
 Pull the Image
 Hadoop and Spark image is quite big. It is close to 1.5 GB.  
 
-Make sure to pull it before running   
-**docker-compose  ** 
+Make sure to pull it before running   docker-compose
 command to setup the lab.
 You can pull the image using   
 **docker pull itversity/itvdelab.**
