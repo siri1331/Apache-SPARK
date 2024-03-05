@@ -2,7 +2,7 @@ Step 1: Install Java (Spark is written in Scala, which runs on the Java Virtual 
   Go to https://adoptopenjdk.net and follow the download and installation instructions for downloading Java 8 or 11.
   
 Step 2: Install Spark.
-  Go on the Apache website (https://spark.apache.org/) and download the latest Spark release.
+  Go on the Apache website (https://spark.apache.org/) and download the latest Spark release.\n
     1. Next, we need to download a winutils.exe to prevent some cryptic Hadoop errors. Go to the https://github.com/cdarlint/winutils repository and download the            winutils.exe file in the hadoop-X.Y.Z/bin directory where X.Y matches the Hadoop version that was used for the selected Spark version. Place the winutils.exe 
       in the bin directory of your Spark installation (C:\Users\[YOUR_USER_NAME\spark]).
     2. You will also need to set SPARK_HOME to the directory of your Spark installation (C:\Users\[YOUR-USER-NAME]\spark). Finally, add the %SPARK_HOME%\bin directory to your PATH environment variable.
