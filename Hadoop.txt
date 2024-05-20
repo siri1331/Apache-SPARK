@@ -1,0 +1,10 @@
+Hbase: NoSQL database
+	Random and Real-time read/writes
+
+Apache PIG- HLL Latin
+	for map reduce tasks
+
+Apache HIVE: 
+Datawarehouse
+HQL(Hive query language
+Execute queries using mapreduce
