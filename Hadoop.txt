@@ -1,10 +1,97 @@
-Hbase: NoSQL database
-	Random and Real-time read/writes
+Yarn: 
+Resource Manager
 
-Apache PIG- HLL Latin
-	for map reduce tasks
+Hbase: 
+Works with NoSQL database allowing Random and Real-time read/writes
+
+Apache PIG- 
+Mapreduce taks are written in HLL Latin.
 
 Apache HIVE: 
 Datawarehouse
 HQL(Hive query language
 Execute queries using mapreduce
+Data exploration and analysis
+
+What is DataWarehouse:
+Data comes from CRM, ERP and SCM--> ETL-->Datawarehouse(No data inconsistency)
+
+ZooKeeper: Distributed coordination system, Naming service
+Acts as a jobs scheduling manager at cluster level
+ZooKeeper is used by Yarn aswell for its research allocation properties.
+
+KAFKA:
+Handles realtime streaming data
+Ingests streaming data from various resources ===> various applications
+Used for Monitoring the Operational data.
+General messaging system
+Pull model - can retain info until user pulls for new data and robust to node failures
+
+Apache Flume :
+Collects streaming or batch data form various resources to Hadoop. Specifincally designed for Hadoop.
+Push model: It will not retain any info and user can get overwhelmed with new data, flume agent failure can lead to loss of events
+
+SQOOP: Used in importing data from rdbms to Hadoop can export data back to RDBMS
+
+Data Sources: 
+Data Ingestion: flume and kafka, Sqoop
+Data Storage: HDFS, HBASE
+Data Preprocessing : Apache Spark , Hadoop Mapreduce
+Data Exploration: HIVE, PIG
+
+
+APACHE SPARK:
+=====================================================================
+Advantanges:
+
+Polyglot- Scala, python, java, R
+Flexibility - Can run on MESOS, Kubernetes, Hadoop, Local
+Unified Engine : Spark MLib, Spark SQL, Spark Streaming and Spark GraphX(Only in Scala)
+In-Memory computations but requires high RAM machines.
+
+Architecture:
+
+Driver Program is SparkContext
+Cluster Manager --> SparkStandalone comes with Spark limited in Scalability,  Yarn, Kubernetis
+Worker nodes with one or more executors and Cache
+
+Spark Applications: 
+
+They run as independent set of processes on a cluster managed by SparkContext in our main Driver Program.
+Cluster is many computers connected togethor so that they can be viewed as a single machine.
+
+Spark Application Lifecycle:
+1. SparkContext can connect with several types of Resource managers Which allocate resources across applications
+2. Once connected Spark acquires the executors on the nodes in cluster.
+3. Next, Driver Program will send application code to the executors, , which are processes that run applications and store data for your application.
+4. Finally, The executors send the result to SparkContext after computation
+
+Deplyment Modes in Yarn: 
+=====================================================================
+Spark submit is a utility to submit Spark jobs/application to spark clusters.
+
+Client mode: Driver program runs on the same machine that submits the application while operations are run on the worker nodes within the cluster.
+
+spark-submit \
+		--class org.apache.spark.examples.SparkPi
+		--master yarn
+		--deploy-mode client
+
+Cluster mode: 
+spark-submit \
+		--class org.apache.spark.examples.SparkPi
+		--master yarn
+		--deploy-mode cluster
+
+Local: 
+local[*] To run application locally with as many threads as the cores
+n number of threads with local[n]
+1 thread with local[1]
+spark-submit --master local[*]/local[n]/local
+
+SparkContext vs SparkSession
+==========================================
+SparkSession provides single point of entry to interact with spark functions.
+SparkSession encompasses SparkContext, SparkConf(Used to set spark parameters for a application) and SQLContext
+
+	
