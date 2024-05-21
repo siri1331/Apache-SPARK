@@ -1,4 +1,14 @@
 1. Big data and its 5 V's challenges & Applications
+        Volume -- Solution: Distributed Systems(Hadoop) Opensource
+        Advantanges --> Replication, Horizontal Scalability, fault tolerant, High concerrancy.
+        Hadoop components: HDFS Commodity hardware
+                            YARN - resource manager - managing workflowws, security
+                            Mapreduce: Data processing layer
+                            Hadoop Commons: Collection of common utilities 
+        Velocity
+        Variety of data
+        Varacity(good resource)
+        Value
 2. Hadoop Echo system - hdfs, yarn, mapreduce
 3. Spark and its echo system. Architecture and different cluster managers
 4. Implementation of Spark local and Yarn. SparkContext vs SparkSession

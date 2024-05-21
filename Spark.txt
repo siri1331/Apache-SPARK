@@ -1,0 +1,73 @@
+APACHE SPARK:
+=====================================================================
+Advantanges:
+
+Polyglot- Scala, python, java, R
+Flexibility - Can run on MESOS, Kubernetes, Hadoop, Local
+Unified Engine : Spark MLib, Spark SQL, Spark Streaming and Spark GraphX(Only in Scala)
+In-Memory computations but requires high RAM machines.
+
+Architecture:
+
+Driver Program is SparkContext
+Cluster Manager --> SparkStandalone comes with Spark limited in Scalability,  Yarn, Kubernetis
+Worker nodes with one or more executors and Cache
+
+Spark Applications: 
+
+They run as independent set of processes on a cluster managed by SparkContext in our main Driver Program.
+Cluster is many computers connected togethor so that they can be viewed as a single machine.
+
+Spark Application Lifecycle:
+1. SparkContext can connect with several types of Resource managers Which allocate resources across applications
+2. Once connected Spark acquires the executors on the nodes in cluster.
+3. Next, Driver Program will send application code to the executors, , which are processes that run applications and store data for your application.
+4. Finally, The executors send the result to SparkContext after computation
+
+Deplyment Modes in Yarn: 
+=====================================================================
+Spark submit is a utility to submit Spark jobs/application to spark clusters.
+
+Client mode: Driver program runs on the same machine that submits the application while operations are run on the worker nodes within the cluster.
+
+spark-submit \
+		--class org.apache.spark.examples.SparkPi
+		--master yarn
+		--deploy-mode client
+
+Cluster mode: 
+spark-submit \
+		--class org.apache.spark.examples.SparkPi
+		--master yarn
+		--deploy-mode cluster
+
+Local: 
+local[*] To run application locally with as many threads as the cores
+n number of threads with local[n]
+1 thread with local[1]
+spark-submit --master local[*]/local[n]/local
+
+SparkContext vs SparkSession
+==========================================
+SparkSession provides single point of entry to interact with spark functions.
+SparkSession encompasses SparkContext, SparkConf(Used to set spark parameters for a application) and SQLContext
+
+
+Structured Data
+Structured data refers to data that is organized in a fixed format or schema. This type of data is typically stored in relational databases and is easily searchable due to its highly organized nature. Examples of structured data include:
+
+Relational Databases: Tables with rows and columns (e.g., SQL databases like MySQL, PostgreSQL).
+Spreadsheets: Excel files with clearly defined cells.
+CSV Files: Text files where data is separated by commas.
+
+Semi-Structured Data
+Semi-structured data is a form of data that does not conform to a rigid schema like structured data, but it still has some organizational properties that make it easier to analyze than unstructured data. This type of data is often stored in formats that support nested structures and variable attributes. Examples of semi-structured data include:
+
+JSON: JavaScript Object Notation, often used in web APIs.
+XML: Extensible Markup Language, used in various data exchange formats.
+NoSQL Databases: Databases like MongoDB, which store data in a flexible, document-oriented format.
+
+Spark Execution:
+Job : It is created by Driver Program when a action is called
+Stages : each job is divided into stages depending on whether there is shuffling of data or not
+Tasks: Each stage is divided into group of tasks where each task executes the same operation on different partition of data.
