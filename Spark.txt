@@ -71,3 +71,16 @@ Spark Execution:
 Job : It is created by Driver Program when a action is called
 Stages : each job is divided into stages depending on whether there is shuffling of data or not
 Tasks: Each stage is divided into group of tasks where each task executes the same operation on different partition of data.
+
+Lineage: 
+* It is not a Physical execution plan
+* Does not divide jobs into stages
+* Does not pipeline tasks into stages
+* It only keeps track of transformations in RDD's
+Lineage is Logical Execution Plan which maintains the dependency. As RDD's are immutable it recomputes RDD's in failure
+
+DAG:
+Physical Execution plan
+Vertices are RDD's and connections are transformations
+It is created after a Action call in RDD by Spark AG Scheduler
+It divides job into stages and stages are subdivided into tasks
