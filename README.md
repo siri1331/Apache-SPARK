@@ -1,6 +1,7 @@
-Two projects on Spark MLlib are built.
-1. RegressionModel - using Linear Regressor 
-2. ClassificationModel - using DecisionTree Classifier 
+The project includes the [documentation](Documentation) of requirements for building Machine Learning Pipelines performing stages like Data pre-processing, Exploratory Data Analysis, Label Encoding and One Hot encoding, Vectorizing the input, buildingML model and Performance tuning using CrossValidation and GridSeachCV.
+
+1. [RegressionModel](RegressionModel) - using Linear Regressor 
+2. [ClassificationModel](ClassificationModel) - using DecisionTree Classifier 
 
 Both the projects involve in building stages in pipeline.
 The stages include 
