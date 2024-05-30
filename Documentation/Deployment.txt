@@ -1,0 +1,61 @@
+spark object return the master 
+it is using along with url for checking spark job.
+
+export SPARK_MAJOR_VERSION=3
+export PYSPARK_PYTHON=python3
+
+conf = sorted(spark.sparkContext.getConf().getAll())
+return a collection of tuples
+each tuple is a configuration in a environment variable.
+
+(spark.master, yarn)
+
+cd /etc/spark3/conf
+Imp files: 
+spark-env.sh
+spark-defaults.conf
+======================These files holds info 
+about spark is configured and clusters are integrated
+
+>>tail spark-env.sh
+HADOOP_HOME
+HADOOP_CONF_DIR
+SPARK_CONF_DIR 
+=======================================================
+THIS proves that Hadoop is integrated with spark
+=======================================================
+>> cat spark-default.conf
+spark.master yarn
+==========================================
+Default master is yarn because of THIS for spark-sql, spark-submit
+==========================================
+>>cat runme.sh
+export SPARK_MAJOR_VERSION=3
+export PYSPARK_PYTHON=python3
+
+
+
+LOCAL MODE
+
+pyspark --master local --conf spark.ui.port=12321
+spark.read.json("/public/retail_db/orders")
+or 
+spark.read.json("hdfs:///public/retail_db/orders")
+hdfs:// is added for hdfs file location if spark is configured with local
+Even launching in local mode-- Spark is able to load files 
+from hdfs
+as spark and hadoop are integrated.
+spark.read.json("file:///data/retail_db/orders")
+file:// is added before path for accessing files in local
+
+
+
+pyspark --deployment-mode cluster
+will fail because default cmd line will deploy using client mode only
+because driver program is initiated remotely
+
+
+
+
+
+

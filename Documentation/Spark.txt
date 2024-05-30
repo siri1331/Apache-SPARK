@@ -10,7 +10,8 @@ In-Memory computations but requires high RAM machines.
 Architecture:
 
 Driver Program is SparkContext
-Cluster Manager --> SparkStandalone comes with Spark limited in Scalability,  Yarn, Kubernetis
+Cluster Manager --> SparkStandalone comes with Spark limited 
+in Scalability,  Yarn, Kubernetis
 Worker nodes with one or more executors and Cache
 
 Spark Applications: 
