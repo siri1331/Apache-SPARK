@@ -61,3 +61,70 @@ spark-env.sh --> SPARK_HOME: Specifies the location where Spark is installed.
                  JAVA_HOME: Specifies the location of the Java Development Kit (JDK) required by Spark.
                  SPARK_WORKER_MEMORY: Sets the amount of memory to allocate for each Spark worker.
                  SPARK_WORKER_INSTANCES: Defines the number of worker instances to start on each node.
+
+
+===========================================================================
+Hadoop Commands
+===========================================================================
+hdfs dfs -ls /public/retail_db/orders
+hdfs dfs -ls -R hdfs_path
+ls -lhtr /data/retail_db/orders
+
+Getting files Metadata
+-------------------------------------------------------------
+hdfs dfs -fsck /public/retail_db/orders -files -blocks -locations
+            files--> details of file names
+            blocks -->details of blocks associated with files
+            locations--> details of worner nodes where blocks are located
+
+hdfs dfs -cp hdfs_path1 hdfs_path2
+hdfs dfs -put local_path hdfs_path1
+hdfs dfs -get hdfs_path local_path
+
+hdfs dfs -rm -R -skipTrash hdfs_path
+            skipTrash will permanently delete the files rathan than to recycle
+
+Gives properties of files
+-------------------------------------------------------------
+
+hdfs dfs -stat hdfs_path
+        Gives last modified timeStamp
+hdfs dfs -stat %o/r/b hdfs_path
+        %o --> blockSize
+        %u --> replicationFactor
+        %b --> fileSize
+        %F --> file or directory
+        %g --> groupName of the owner
+        %u --> userName of the file
+
+hdfs dfs -du -s -h hdfs_path
+            Summarize disk usage in human readable format
+
+hdfs dfs -df -h
+            Current capacity and usage of HDFS
+
+Preview of data
+-------------------------------------------------------------
+Only on csv,json and txt files
+hdfs dfs -tail hdfs_path
+            Only works when file size is less than 1Kb
+
+hdfs dfs -cat hdfs_path|more
+            see first few lines
+
+
+Change Permissions
+-------------------------------------------------------------
+hdfs dfs -chown -R u+w/g+w/o+w hdfs_path
+            u --> owner
+            g --> group
+            o --> other
+            r,w,x --> read,write,execute
+            -w --> remove write permission from u,g,o
+
+            rwx-r-x-r-x ==> 755
+            hdfs dfs -chmod -R 755 hdfs_path
+
+Overriding properties
+-------------------------------------------------------------
+hdfs dfs -D dfs.blocksize=64M -D dfs.replication=3 -put /data/retail_db/orders /user/ana012815/orders
