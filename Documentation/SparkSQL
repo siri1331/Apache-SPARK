@@ -1,0 +1,31 @@
+Window Fucntions:
+min()
+max()
+sum()
+count(*)
+avg(col)
+first_value(col)
+last_value(col) OVER (PARTITION BY col2 ORDER BY col3 ROWS BETWEEN UNBOUNDED PRECEEDING AND UNBOUNDED FOLLOWING) as last_value
+nth_value(col) OVER (PARTITION BY col2 ORDER BY col3 ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING)
+ntile(4) OVER (PARTITION BY col2 ORDER BY col3) as quartile
+lead(col,step_size,null_value_replacement) OVER (PARTITION BY col2 ORDER BY col3) as leading
+lag(col,step_size,null_value_replacement)
+
+row_number() --> sequntial integers to rows in partition BY
+rank() --> skips if repeated
+dense_rank --> does not skip
+
+==========================
+pyspark
+==========================
+from pyspark.sql.window import Window
+winSpec = Window.partitionBy(col1).orderBy(col2)
+df  = df.withColumn("new_column",F.dense_rank().over(winSpec))
+last_value and max
+winSpec = Window.partitionBy(col1).orderBy(col2).rowsBetween(unboundedPreceeding,unboundedFollowing)
+
+By default in pyspark integers
+rowsBetween(unboundedPreceeding,currentRow)
+
+
+

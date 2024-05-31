@@ -38,3 +38,26 @@ Data Ingestion: flume and kafka, Sqoop
 Data Storage: HDFS, HBASE
 Data Preprocessing : Apache Spark , Hadoop Mapreduce
 Data Exploration: HIVE, PIG
+=======================================================================
+Property Files:
+=======================================================================
+cd /etc/hadoop/conf
+hadoop-env.sh -->java_home and hadoop.heap.size=15g
+hdfs-site.xml --> nameNode, dataNode, blockSize, replication
+core-site.xml --> fs.defaultFS which specifies the default file system URI
+yarn-env.sh - resource allocation policies, node manager settings, and resource manager addresses.
+yarn-site.xml
+mapred-site.xml
+
+cd /opt/spark tab tab and select the spark-hadoop version
+spark-defaults.conf --> spark.master
+                        spark.executor.instances -->Specifies the number of executors
+                        spark.executor.memory -->their memory
+                        spark.executor.cores --> the number of cores per executor.
+                        shuffle configurations
+                        serialization settings
+                        logging levels
+spark-env.sh --> SPARK_HOME: Specifies the location where Spark is installed.
+                 JAVA_HOME: Specifies the location of the Java Development Kit (JDK) required by Spark.
+                 SPARK_WORKER_MEMORY: Sets the amount of memory to allocate for each Spark worker.
+                 SPARK_WORKER_INSTANCES: Defines the number of worker instances to start on each node.

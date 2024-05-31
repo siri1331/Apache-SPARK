@@ -1,0 +1,5 @@
+Uses MapReduce algorithms
+/etc/hive/conf
+hive-env.sh --> all env variables for runtimr behaviour of hive
+hive-site.xml--> info od hive metastore
+
