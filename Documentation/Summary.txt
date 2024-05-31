@@ -19,4 +19,23 @@
 9. SparkSQL catalyst optimiser, SparkSQL Implementation.
 10. Spark ML: ML lib and ML project in Spark including data preprocessing to build ML models.
                 Creation of ML pipelines to combine complete ML workflow
-                
+
+
+spark-submit --master yarn
+             --deployment-mode cluster,local[3]
+             --conf spark.executor.memoryOverhead=0.20
+             --driver-cores=2
+             --driver-memory=8G
+             --num-executors=4
+             --executor-cores=4
+             --executor-memory=16G
+
+Spark Creates one job for each action
+A job will contain series of multiple transformations
+Stage : end of every wide transformation creates a stage
+n wide dependencies --> n+1 stages
+Data from stage1 -------------Shuffle/Sort--------> stage2
+Each stage is divided into tasks --> no of tasks = no of partitions
+Task: smallest unot of work in a spark job
+
+Spark driver will assign these tasks to the executor and executes the tasks
