@@ -1,0 +1,18 @@
+Extract trending #tags related to our desired topic every few 
+minutes since hashtagged tweets are more engaging.
+
+We will use Tweepy to access Twitter’s streaming API and the Spark streaming component with TCP socket to 
+receive tweets. We will layer tweets on RDD and then retrieve the 
+most popular hashtags. After that, we use Spark SQL to save the 
+top hashtags to a temporary database. Finally, we visualize the 
+results using Python’s visualization tools.
+
+Part 1: Retrieve Tweets from the Twitter API
+    Step 1: Import the necessary packages
+    Step 2: Insert Twitter developer credentials
+    Step 3: Create a StreamListener instance
+    Step 4: Send data from Twitter
+
+Part 2: Tweets preprocessing and finding trending #tags
+    Step 1: Import the necessary packages
+    Step 2: Initiate SparkContext
